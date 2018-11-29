@@ -64,7 +64,7 @@ public class WorkArray {
 
     Формирует строку вывода для массива
      */
-    protected String printArray(int[] arr) {
+    public String printArray(int[] arr) {
         int size = arr.length;
         int count = 0;
         StringBuilder string = new StringBuilder();
@@ -160,8 +160,26 @@ public class WorkArray {
     }
 
     public void runAllSort() {
-        Scanner sc = new Scanner(System.in);
-        int key = sc.nextInt();
+        Thread sortInsert = new Thread(this::insertSort);
+        Thread sortSelect = new Thread(this::sortBySelection);
+        Thread sortBubble = new Thread(this::bubbleSort);
+        timeSortBubble = -1;
+        timeSortSelect = -1;
+        timeSortInsert = -1;
+        sortInsert.start();
+        sortSelect.start();
+        sortBubble.start();
+        boolean trigger = false;
+        while (!trigger) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (timeSortInsert > -1 && timeSortSelect > -1 && timeSortBubble > -1) {
+                trigger = true;
+            }
+        }
     }
 
     public int getSizeArray() {
