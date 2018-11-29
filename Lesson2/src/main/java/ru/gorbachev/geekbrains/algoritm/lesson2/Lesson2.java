@@ -20,7 +20,7 @@ public class Lesson2 {
             System.out.println("6. Сделать сортировку выбором и отобразить результат");
             System.out.println("7. Сделать сортировку вставками и отобразить результат");
             System.out.println("8. Сделать сортировку пузырьком и отобразить результат");
-            System.out.println("9. Сделать все сортировки и сравнить результат");
+            System.out.println("9. Сделать все сортировки и сравнить результат (только время выполнения)");
             System.out.println("10. Показать массив");
             System.out.println("0. выход");
             Scanner sc = new Scanner(System.in);
