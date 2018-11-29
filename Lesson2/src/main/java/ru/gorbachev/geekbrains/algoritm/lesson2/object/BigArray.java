@@ -1,33 +1,48 @@
 package ru.gorbachev.geekbrains.algoritm.lesson2.object;
 
-public class BigArray {
+import ru.gorbachev.geekbrains.algoritm.lesson2.baseworkarray.WorkArray;
 
-    private int size_array;
-    private int[] array;        //Массив целых чисел
+public class BigArray extends WorkArray {
 
-    public BigArray(int size_array) {
-        if (size_array <= 0) {
-            size_array = 1000000;
+    public BigArray(int sizeArray) {
+        if (sizeArray <= 0) {
+            sizeArray = 1000000;
         }
-        this.size_array = size_array;
+        this.sizeArray = sizeArray;
         createArray();
     }
 
     public BigArray() {
-        this.size_array = 1000000;
+        this.sizeArray = 1000000;
         createArray();
     }
 
     private void createArray() {
-        array = new int[size_array];
-        //Заполняем массив случайными числами от 0 до size_array/2
-        int half_size_array = size_array/2;
-        for (int i = 0; i < size_array; i ++) {
+        array = new int[sizeArray];
+        //Заполняем массив случайными числами от 0 до sizeArray/2
+        int half_size_array = sizeArray /2;
+        for (int i = 0; i < sizeArray; i ++) {
             array[i] = (int) ( Math.random() * half_size_array );
         }
     }
 
     public int[] getArray() {
         return array;
+    }
+
+    @Override
+    public String toString() {
+        int size = array.length;
+        int count = 0;
+        StringBuilder string = new StringBuilder();
+        for (int i1 : array) {
+            string.append("\t").append(i1);
+            count++;
+            if (count == 10) {
+                string.append("\n");
+                count = 0;
+            }
+        }
+        return string.toString();
     }
 }
