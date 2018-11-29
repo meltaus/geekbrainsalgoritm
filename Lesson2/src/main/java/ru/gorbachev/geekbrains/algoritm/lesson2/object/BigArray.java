@@ -32,17 +32,6 @@ public class BigArray extends WorkArray {
 
     @Override
     public String toString() {
-        int size = array.length;
-        int count = 0;
-        StringBuilder string = new StringBuilder();
-        for (int i1 : array) {
-            string.append("\t").append(i1);
-            count++;
-            if (count == 10) {
-                string.append("\n");
-                count = 0;
-            }
-        }
-        return string.toString();
+        return printArray(array);
     }
 }
