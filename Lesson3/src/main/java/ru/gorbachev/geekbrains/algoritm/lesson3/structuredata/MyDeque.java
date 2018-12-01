@@ -31,7 +31,7 @@ public class MyDeque<Item> extends BasicQueue {
 
     /*
     Получаем элемент очереди с начала или с конца (true с конеца, false с начала).
-    @param  side            Сторона получения элемента (true с начала, false с конца)
+    @param  side            Сторона получения элемента (true с конца, false с начала)
      */
     public Item pop(boolean side) {
         if (side) {
@@ -45,7 +45,7 @@ public class MyDeque<Item> extends BasicQueue {
 
     /*
     Получаем элемент очереди с начала или с конца (true с конеца, false с начала).
-    @param  side            Сторона получения элемента (true с начала, false с конца)
+    @param  side            Сторона получения элемента (true с конца, false с начала)
      */
     public Item peek(boolean side) {
         if (isEmpty()) {
