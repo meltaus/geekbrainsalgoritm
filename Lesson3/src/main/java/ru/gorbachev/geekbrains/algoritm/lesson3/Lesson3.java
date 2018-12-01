@@ -17,6 +17,7 @@ public class Lesson3 {
             System.out.println("2. Начать работу с очередью");
             System.out.println("3. Начать работу с дэком");
             System.out.println("4. Начать работу с списком с приоритетом");
+            System.out.println("5. Перевернуть строку при помощи стэка");
             System.out.println("0. выход");
             Scanner sc = new Scanner(System.in);
             key = sc.nextInt();
@@ -33,8 +34,27 @@ public class Lesson3 {
                 case 4:
                     workMyPriorityQueue();
                     break;
+                case 5:
+                    reventString();
+                    break;
             }
         }
+    }
+
+    private static void reventString() {
+        System.out.println("Введите строку");
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        char[] charArray = str.toCharArray();
+        MyStack myStack = new MyStack();
+        for (char ch : charArray) {
+            myStack.push(ch);
+        }
+        int count = myStack.getSize();
+        for (int i = 0; i < count; i++) {
+            System.out.print(myStack.pop());
+        }
+        System.out.println();
     }
 
     private static void workMyStack() {
