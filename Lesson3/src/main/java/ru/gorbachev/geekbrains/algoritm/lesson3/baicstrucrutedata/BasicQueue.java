@@ -82,7 +82,7 @@ public class BasicQueue<Item> {
         if (size > 0) {
             int currentSizeStack = anyQueue.length;
             if (size == currentSizeStack / 4) {
-                resizeQueue(currentSizeStack);
+                resizeQueue(currentSizeStack / 2);
             }
         }
     }

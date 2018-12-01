@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class BinaryHeap {
     private ArrayList<Integer> list;
 
-    public BinaryHeap(int[] sourceArray) {
+    public BinaryHeap() {
         list = new ArrayList<>();
     }
 
@@ -110,5 +110,9 @@ public class BinaryHeap {
 
     public int getSize() {
         return list.size();
+    }
+
+    public int getElement(int index) {
+        return list.get(index);
     }
 }
