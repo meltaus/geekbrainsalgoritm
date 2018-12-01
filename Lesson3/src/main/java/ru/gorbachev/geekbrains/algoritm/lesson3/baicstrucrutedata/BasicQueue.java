@@ -4,8 +4,13 @@ import java.util.NoSuchElementException;
 
 public class BasicQueue<Item> {
 
-    protected Object[] stack = new Object[1];
-    protected int size = 0;
+    protected Object[] anyQueue;
+    protected int size;
+
+    public BasicQueue() {
+        anyQueue = new Object[1];
+        size = 0;
+    }
 
     public boolean isEmpty() {
         return size == 0;
@@ -18,11 +23,11 @@ public class BasicQueue<Item> {
     protected void resizeQueue(int newSize) {
         Object[] tmpStack = new Object[newSize];
         if (this.size < newSize) {
-            System.arraycopy(stack, 0, tmpStack, 0, this.size);
+            System.arraycopy(anyQueue, 0, tmpStack, 0, this.size);
         } else {
-            System.arraycopy(stack, 0, tmpStack, 0, newSize);
+            System.arraycopy(anyQueue, 0, tmpStack, 0, newSize);
         }
-        stack = tmpStack;
+        anyQueue = tmpStack;
     }
 
     /*
@@ -30,11 +35,11 @@ public class BasicQueue<Item> {
     @param item             Новый элемент
      */
     public void push(Item item) {
-        if (size == stack.length) {
+        if (size == anyQueue.length) {
             resizeQueue(size * 2);
         }
 
-        stack[size++] = item;
+        anyQueue[size++] = item;
     }
 
     /*
@@ -42,14 +47,9 @@ public class BasicQueue<Item> {
      */
     public Item pop() {
         Item item = peek();
-        stack[size - 1] = null;
+        anyQueue[size - 1] = null;
         size--;
-        if (size > 0) {
-            int currentSizeStack = stack.length;
-            if (size == currentSizeStack / 4) {
-                resizeQueue(currentSizeStack);
-            }
-        }
+        chekSize();;
 
         return item;
     }
@@ -59,13 +59,13 @@ public class BasicQueue<Item> {
             throw new NoSuchElementException();
         }
 
-        return (Item) stack[size - 1];
+        return (Item) anyQueue[size - 1];
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Object o : stack) {
+        for (Object o : anyQueue) {
             if (o != null) {
                 stringBuilder.append(o).append(", ");
             }
@@ -73,5 +73,17 @@ public class BasicQueue<Item> {
         String resultString = stringBuilder.toString();
         resultString = resultString.substring(0, resultString.length() - 2);
         return resultString;
+    }
+
+    /*
+    Проверяет размер очереди и при необходимости уменьшает его
+     */
+    protected void chekSize() {
+        if (size > 0) {
+            int currentSizeStack = anyQueue.length;
+            if (size == currentSizeStack / 4) {
+                resizeQueue(currentSizeStack);
+            }
+        }
     }
 }
