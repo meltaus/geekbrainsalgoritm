@@ -87,11 +87,18 @@ public class BasicQueue<Item> {
         }
     }
 
+    /*
+    Метод для удаления начального элемента из очереди
+     */
     protected void removeRunElement() {
         Object[] tmpStack = new Object[size];
         System.arraycopy(anyQueue, 1, tmpStack, 0, size);
         anyQueue = tmpStack;
         size--;
         chekSize();
+    }
+
+    public int getSize() {
+        return size;
     }
 }
