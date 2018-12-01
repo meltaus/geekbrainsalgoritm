@@ -1,4 +1,6 @@
 package ru.gorbachev.geekbrains.algoritm.lesson3.structuredata;
 
-public class MyStack {
+import ru.gorbachev.geekbrains.algoritm.lesson3.baicstrucrutedata.BasicQueue;
+
+public class MyStack extends BasicQueue {
 }
