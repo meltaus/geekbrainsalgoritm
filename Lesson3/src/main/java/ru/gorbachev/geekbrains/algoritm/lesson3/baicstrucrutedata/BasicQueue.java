@@ -49,7 +49,7 @@ public class BasicQueue<Item> {
         Item item = peek();
         anyQueue[size - 1] = null;
         size--;
-        chekSize();;
+        chekSize();
 
         return item;
     }
@@ -85,5 +85,13 @@ public class BasicQueue<Item> {
                 resizeQueue(currentSizeStack);
             }
         }
+    }
+
+    protected void removeRunElement() {
+        Object[] tmpStack = new Object[size];
+        System.arraycopy(anyQueue, 1, tmpStack, 0, size);
+        anyQueue = tmpStack;
+        size--;
+        chekSize();
     }
 }

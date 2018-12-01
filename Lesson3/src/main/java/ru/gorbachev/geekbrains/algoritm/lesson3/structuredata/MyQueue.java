@@ -16,11 +16,7 @@ public class MyQueue<Item> extends BasicQueue {
     @Override
     public Item pop() {
         Item item = peek();
-        Object[] tmpStack = new Object[size];
-        System.arraycopy(anyQueue, 1, tmpStack, 0, size);
-        anyQueue = tmpStack;
-        size--;
-        chekSize();
+        removeRunElement();
 
         return item;
     }
