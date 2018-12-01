@@ -91,8 +91,8 @@ public class BinaryHeap {
     Получить минимальный элемент из кучи
      */
     public int popMin() {
-        int result = list.get(list.size());
-        list.remove(list.size());
+        int result = list.get(list.size()-1);
+        list.remove(list.size()-1);
         return result;
     }
 

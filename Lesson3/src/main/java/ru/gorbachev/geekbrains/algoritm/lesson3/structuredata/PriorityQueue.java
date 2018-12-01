@@ -2,8 +2,6 @@ package ru.gorbachev.geekbrains.algoritm.lesson3.structuredata;
 
 import ru.gorbachev.geekbrains.algoritm.lesson3.object.ElementPriorityQueue;
 
-import java.util.ArrayList;
-
 public class PriorityQueue<Item>{
 
     private ElementPriorityQueue[] stack;
@@ -27,7 +25,7 @@ public class PriorityQueue<Item>{
             resizeQueue(stack.length * 2);
         }
 
-        stack[size] = new ElementPriorityQueue(key, value);
+        stack[size] = new ElementPriorityQueue<>(key, value);
         binaryHeap.add(key);
         size++;
     }
@@ -60,6 +58,7 @@ public class PriorityQueue<Item>{
                 item = (Item) stack[i].getValue();
                 if (size - 1 - i >= 0) System.arraycopy(stack, i + 1, stack, i, size - 1 - i);
                 size--;
+                chekSize();
                 return item;
             }
         }
@@ -126,10 +125,41 @@ public class PriorityQueue<Item>{
     /*
     Слияние двух списков. Предполагается, что данные в них одинаковые
      */
-    public void addPriorityQueue(ElementPriorityQueue[] addStack) {
-        int count = addStack.length;
-        for (int i = 0; i < count; i++) {
-            insertElement(addStack[i].getKey(), (Item) addStack[i].getValue());
+//    public void addPriorityQueue(ElementPriorityQueue[] addStack) {
+//        int count = addStack.length;
+//        for (int i = 0; i < count; i++) {
+//            Item item = (Item) addStack[i].getValue();
+//            insertElement(addStack[i].getKey(), item);
+//        }
+//    }
+    //Нет времени решить проблему с приведением типов.
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = binaryHeap.getSize()-1; i >= 0; i--) {
+            stringBuilder.append(searchValue(binaryHeap.getElement(i))).append("; ");
+        }
+        String resultString = stringBuilder.toString();
+        resultString = resultString.substring(0, resultString.length() - 2);
+        return resultString;
+    }
+
+    /*
+    Отдать строку в подярке приоритета или без (true с приоритетом, false без)
+    @param trigger          Вариант вывода
+     */
+    public String toString(boolean trigger) {
+        if (trigger) {
+            return toString();
+        } else {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < size; i++) {
+                stringBuilder.append(stack[i].getValue()).append("; ");
+            }
+            String resultString = stringBuilder.toString();
+            resultString = resultString.substring(0, resultString.length() - 2);
+            return resultString;
         }
     }
 }
