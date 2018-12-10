@@ -5,6 +5,7 @@ import ru.gorbachev.geekbrains.algoritm.lesson5.math.MyPow;
 public class Lesson5 {
     public static void main(String[] args) {
         MyPow myPow = new MyPow();
-        System.out.println(myPow.pow(2.1,30));
+        System.out.println(myPow.fastPow(2.1,15));
+        System.out.println(myPow.pow(2.1,15));
     }
 }
