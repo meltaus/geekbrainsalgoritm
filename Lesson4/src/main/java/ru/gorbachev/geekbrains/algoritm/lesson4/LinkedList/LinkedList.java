@@ -40,6 +40,10 @@ public class LinkedList<Item> {
         return (Item) first.getValue();
     }
 
+    /*
+    Вставить в конец списка
+    @param value        объект для вставки
+     */
     public void insertLast(Item value) {
         Node newNode = new Node(value);
         if (isEmpty()){
